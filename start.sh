@@ -22,6 +22,8 @@ if [ ! -e /var/cache/munin/www/index.html ]; then
 fi
 
 munin-node-configure --remove --shell | sh
+ln -s /usr/share/munin/plugins/hddtemp_smartctl   /etc/munin/plugins/hddtemp_smartctl
+
 service cron start
 a2enmod cgid
 service apache2 start

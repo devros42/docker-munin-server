@@ -8,7 +8,7 @@ ENV ALLOWED_HOSTS="127.0.0.1/32" \
 
 RUN \
 	apt-get update && \
-	DEBIAN_FRONTEND=noninteractive apt-get install -y munin apache2 lm-sensors && \
+	DEBIAN_FRONTEND=noninteractive apt-get install -y munin apache2 lm-sensors smartmontools && \
 	apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* && \
 	sed -ri 's/^log_file.*/# \0/; \
 			s/^pid_file.*/# \0/; \
@@ -19,6 +19,7 @@ RUN \
 	ln -s /usr/share/munin/plugins/sensors_   /etc/munin/plugins/sensors_temp && \
 	ln -s /usr/share/munin/plugins/sensors_   /etc/munin/plugins/sensors_fan && \
 	ln -s /usr/share/munin/plugins/sensors_   /etc/munin/plugins/sensors_volt && \
+	ln -s /usr/share/munin/plugins/hddtemp_smartctl   /etc/munin/plugins/hddtemp_smartctl && \
 	mkdir /var/run/munin  && \
 	chown munin:munin /var/run/munin
 

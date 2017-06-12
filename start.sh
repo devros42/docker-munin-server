@@ -25,6 +25,7 @@ munin-node-configure --remove --shell | sh
 ln -s /usr/share/munin/plugins/hddtemp_smartctl   /etc/munin/plugins/hddtemp_smartctl
 ln -s /usr/share/munin/plugins/iostat   /etc/munin/plugins/iostat 
 ln -s /usr/share/munin/plugins/meminfo   /etc/munin/plugins/meminfo 
+printf '[docker_*]\nuser root\n' > /etc/munin/plugin-conf.d/docker
 
 service cron start
 a2enmod cgid

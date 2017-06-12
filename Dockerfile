@@ -10,8 +10,8 @@ RUN \
 	apt-get update && \
 	DEBIAN_FRONTEND=noninteractive apt-get install -y munin apache2 lm-sensors smartmontools iostat git && \
 	git clone https://github.com/scanterog/munin-plugin-docker.git && \
-	chmod 775 munin-plugin-docker/docker_*
-	cp munin-plugin-docker/docker_* /etc/munin/plugins/
+	chmod 775 munin-plugin-docker/docker_* && \
+	cp munin-plugin-docker/docker_* /etc/munin/plugins/ && \
 	apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* && \
 	sed -ri 's/^log_file.*/# \0/; \
 			s/^pid_file.*/# \0/; \

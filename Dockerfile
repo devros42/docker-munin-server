@@ -4,11 +4,11 @@ MAINTAINER git@shaf.net
 
 ENV ALLOWED_HOSTS="127.0.0.1/32" \
 	HOSTNAME="unRAID" \
-	TZ="Europe/London"
+	TZ="America/New_York"
 
 RUN \
 	apt-get update && \
-	DEBIAN_FRONTEND=noninteractive apt-get install -y munin apache2 lm-sensors smartmontools sysstat git && \
+	DEBIAN_FRONTEND=noninteractive apt-get install -y munin apache2 lm-sensors smartmontools sysstat git tzdata && \
 	git clone https://github.com/scanterog/munin-plugin-docker.git && \
 	chmod 775 munin-plugin-docker/docker_* && \
 	cp munin-plugin-docker/docker_* /etc/munin/plugins/ && \

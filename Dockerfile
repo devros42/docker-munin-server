@@ -8,7 +8,7 @@ ENV ALLOWED_HOSTS="127.0.0.1/32" \
 
 RUN \
 	apt-get update && \
-	DEBIAN_FRONTEND=noninteractive apt-get install -y munin apache2 lm-sensors smartmontools sysstat git tzdata && \
+	DEBIAN_FRONTEND=noninteractive apt-get install -y munin munin-libvirt-plugins munin-node munin-plugins-core munin-plugins-extra apache2 lm-sensors smartmontools sysstat git tzdata && \
 	git clone https://github.com/scanterog/munin-plugin-docker.git && \
 	chmod 775 munin-plugin-docker/docker_* && \
 	cp munin-plugin-docker/docker_* /etc/munin/plugins/ && \
